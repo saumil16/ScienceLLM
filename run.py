@@ -7,8 +7,7 @@ app = FastAPI()
 
 @app.get('/')
 async def root():
-    return "This is the root path!"
+    app = gr.mount_gradio_app(app,demo,path='/home')
+    return app
 
-# Mount Gradio app on the root path
-app = gr.mount_gradio_app(app, demo, path='/')
-
+app = gr.mount_gradio_app(app,demo,path='/home')
