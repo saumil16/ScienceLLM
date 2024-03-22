@@ -28,13 +28,16 @@ def query_data(query):
 with gr.Blocks (theme=Base(), title="LLM") as demo:
     gr.Markdown(
         """
-        Science LLM
+        <h1 style="text-align: center; font-weight: bold; left-border: 50px"> Dive Deep in the world of science ...</h1>
         """)
     textbox = gr.Textbox(label="Question:")
     with gr.Row():
         button = gr.Button("Submit", variant="primary")
     with gr.Column():
-        output2 = gr.Textbox(lines=1, max_lines=10, label="Output")    
+        #output2 = gr.Textbox(lines=1, max_lines=20, label="Output")   
+        spacer = gr.Markdown("<br><br>")  # Adding empty Markdown for spacing 
+        output2 = gr.Textbox(lines=1, max_lines=10, label="Output")
+
     button.click(query_data, textbox, outputs=[output2])        
     
 #demo.launch()
