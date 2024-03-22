@@ -9,8 +9,6 @@ import gradio as gr
 from gradio.themes.base import Base
 import key_param
 
-load_dotenv()
-
 client = MongoClient(key_param.MONGO_URL)
 dbName = "pro"
 collectionName = "llmproject"
