@@ -7,9 +7,6 @@ from langchain.llms import OpenAI
 from langchain.chains import RetrievalQA
 import gradio as gr
 from gradio.themes.base import Base
-import key_param 
-import os
-from dotenv import load_dotenv
 import key_param
 
 load_dotenv()
