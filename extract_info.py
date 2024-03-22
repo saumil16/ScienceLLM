@@ -28,7 +28,8 @@ def query_data(query):
 with gr.Blocks (theme=Base(), title="LLM") as demo:
     gr.Markdown(
         """
-        <h1 style="text-align: center; font-weight: bold; left-border: 50px"> Dive Deep in the world of science ...</h1>
+        <h1 style="text-align: center; font-weight: bold; left-border: 50px"> Welcome to <b>SciQuest</b></h1>
+        <h2 style="text-align: center; font-weight: bold; left-border: 50px"> Dive Deep in the world of science ...</h2>
         """)
     textbox = gr.Textbox(label="Question:")
     with gr.Row():
