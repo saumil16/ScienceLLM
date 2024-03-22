@@ -37,4 +37,4 @@ with gr.Blocks (theme=Base(), title="LLM") as demo:
         output2 = gr.Textbox(lines=1, max_lines=10, label="Output")    
     button.click(query_data, textbox, outputs=[output2])        
     
-demo.launch()
+#demo.launch()
