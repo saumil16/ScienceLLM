@@ -9,17 +9,17 @@ import gradio as gr
 from gradio.themes.base import Base
 import key_param
 
-client = MongoClient(key_param.MONGO_URL)
+client = MongoClient(process.env.mongo_url)
 dbName = "pro"
 collectionName = "llmproject"
 collection = client[dbName][collectionName]
 
-embeddings = OpenAIEmbeddings(openai_api_key=key_param.openai_api_key)
+embeddings = OpenAIEmbeddings(openai_api_key=process.env.openai_apikey)
 
 vectorStore = MongoDBAtlasVectorSearch(collection, embeddings)
 
 def query_data(query):
-    llm = OpenAI(openai_api_key=key_param.openai_api_key,temperature=0)
+    llm = OpenAI(openai_api_key=process.env.openai_apikey,temperature=0)
     retriever = vectorStore.as_retriever()
     qa = RetrievalQA.from_chain_type(llm, chain_type="stuff", retriever=retriever)
     retriever_output = qa.run(query)
