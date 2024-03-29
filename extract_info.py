@@ -50,4 +50,4 @@ with gr.Blocks (theme=Base(), title="LLM") as demo:
 
     button.click(query_data, textbox, outputs=[output2])        
     
-#demo.launch()
+demo.launch()
