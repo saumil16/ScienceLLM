@@ -1,2 +1,0 @@
-openai_api_key = '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'
-MONGO_URL = 'mongodb+srv://shankarsaumil:llmproject123@llmproject.5ovqtt4.mongodb.net/?retryWrites=true&w=majority&appName=llmProject'
