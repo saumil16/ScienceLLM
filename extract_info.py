@@ -8,18 +8,27 @@ from langchain.chains import RetrievalQA
 import gradio as gr
 from gradio.themes.base import Base
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+openai_api_key = os.getenv("OPENAI_API_KEY")
+# print(openai_api_key)
 
 client = MongoClient(os.getenv('mongo_url'))
+# print(os.getenv('mongo_url'))
 dbName = "pro"
 collectionName = "llmproject"
 collection = client[dbName][collectionName]
 
-embeddings = OpenAIEmbeddings(openai_api_key=os.getenv('openai_apikey'))
+embeddings = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"))
 
 vectorStore = MongoDBAtlasVectorSearch(collection, embeddings)
 
+
 def query_data(query):
-    llm = OpenAI(openai_api_key=os.getenv('openai_apikey'),temperature=0)
+    llm = OpenAI(openai_api_key=os.getenv("OPENAI_API_KEY"),temperature=0)
+    print('1')
     retriever = vectorStore.as_retriever()
     qa = RetrievalQA.from_chain_type(llm, chain_type="stuff", retriever=retriever)
     retriever_output = qa.run(query)
@@ -41,4 +50,4 @@ with gr.Blocks (theme=Base(), title="LLM") as demo:
 
     button.click(query_data, textbox, outputs=[output2])        
     
-#demo.launch()
+demo.launch()
