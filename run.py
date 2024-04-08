@@ -7,7 +7,6 @@ app = FastAPI()
 
 @app.get('/')
 async def root():
-    app = gr.mount_gradio_app(app,demo,path='/home')
-    return app
+    return "Kindly redirect to sciencellm.onrender.com/home"
 
 app = gr.mount_gradio_app(app,demo,path='/home')
